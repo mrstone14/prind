@@ -1,3 +1,5 @@
+version: '3.7'
+
 ## Ustreamer base Service
 x-ustreamer-svc: &ustreamer-svc
   image: mkuf/ustreamer:latest
