@@ -7,4 +7,4 @@ webcam:
   snapshot: http://webcam:8080/snapshot
   stream: /webcam/stream
 accessControl:
-  userfile: /octoprint/octoprint/users.yml
+  userfile: /octoprint/octoprint/users.yaml
