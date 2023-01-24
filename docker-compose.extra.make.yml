@@ -1,3 +1,5 @@
+version: '3.7'
+
 services:
   make:
     image: mkuf/klipper:${TAG:-latest}-mcu
