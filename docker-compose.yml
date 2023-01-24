@@ -1,3 +1,5 @@
+version: '3.7'
+
 ## Common Templates
 x-klipper-svc: &klipper-svc
   image: mkuf/klipper:latest
@@ -88,8 +90,12 @@ services:
     volumes:
       - /dev:/dev
       - run:/opt/printer_data/run
-      - octoprint:/octoprint
-      - ./config/octoprint.yaml:/octoprint/octoprint/config.yaml
+      - /home/pi/prind/octoprint:/octoprint
+      - ./config/octoprint.yml:/octoprint/octoprint/config.yml
+      - /run/dbus:/run/dbus
+      - /usr/bin/vcgencmd:/usr/bin/vcgencmd 
+      - /usr/lib/aarch64-linux-gnu/libvcos.so.0:/usr/lib/aarch64-linux-gnu/libvcos.so.0        
+      - /usr/lib/aarch64-linux-gnu/libvchiq_arm.so.0:/usr/lib/aarch64-linux-gnu/libvchiq_arm.so.0 
     profiles:
       - octoprint
     labels:
@@ -98,6 +104,8 @@ services:
       traefik.http.services.octoprint.loadbalancer.server.port: 5000
       traefik.http.routers.octoprint.rule: PathPrefix(`/`)
       traefik.http.routers.octoprint.entrypoints: web
+    device_cgroup_rules:
+      - 'c 188:* rmw'
 
   fluidd:
     image: cadriel/fluidd:latest
@@ -127,6 +135,7 @@ services:
   ##
   klipperscreen:
     image: mkuf/klipperscreen:latest
+    privileged: true
     restart: unless-stopped
     network_mode: host
     profiles:
@@ -137,6 +146,8 @@ services:
       - ./config:/opt/cfg
     labels:
       org.prind.service: klipperscreen
+    environment:
+      - DISPLAY=192.168.1.152:0
 
   moonraker-telegram-bot:
     image: lefskiy/moonraker-telegram-bot:development
