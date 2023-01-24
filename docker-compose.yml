@@ -91,7 +91,7 @@ services:
       - /dev:/dev
       - run:/opt/printer_data/run
       - /home/pi/prind/octoprint:/octoprint
-      - ./config/octoprint.yml:/octoprint/octoprint/config.yml
+      - ./config/octoprint.yaml:/octoprint/octoprint/config.yaml
       - /run/dbus:/run/dbus
       - /usr/bin/vcgencmd:/usr/bin/vcgencmd 
       - /usr/lib/aarch64-linux-gnu/libvcos.so.0:/usr/lib/aarch64-linux-gnu/libvcos.so.0        
