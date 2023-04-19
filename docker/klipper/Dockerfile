@@ -36,7 +36,7 @@ ENTRYPOINT ["/opt/venv/bin/python", "klipper/klippy/klippy.py"]
 CMD ["-I", "printer_data/run/klipper.tty", "-a", "printer_data/run/klipper.sock", "printer_data/config/printer.cfg"]
 
 ## For building MCU Code
-FROM ubuntu:rolling as mcu
+FROM ubuntu:22.10 as mcu
 
 WORKDIR /opt
 ARG DEBIAN_FRONTEND=noninteractive
