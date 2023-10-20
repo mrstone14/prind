@@ -15,7 +15,7 @@ RUN python -m venv venv \
  && venv/bin/pip install -r moonraker/scripts/moonraker-requirements.txt
 
 ## Runtime Image
-FROM python:3-slim as run
+FROM python:3.12.0b1-slim as run
 
 RUN apt update \
  && apt install -y \
