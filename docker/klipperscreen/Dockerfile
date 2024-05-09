@@ -18,7 +18,7 @@ RUN git clone ${REPO} klipperscreen \
 RUN python -m venv venv \
  && venv/bin/pip install -r klipperscreen/scripts/KlipperScreen-requirements.txt
 
-FROM python:3-slim as run
+FROM python:3.13.0b1-slim as run
 
 RUN apt update \
  && apt install -y \
