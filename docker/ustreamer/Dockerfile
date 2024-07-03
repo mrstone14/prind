@@ -1,5 +1,5 @@
 ## Get Code and make
-FROM debian:bullseye-20230109-slim as build
+FROM debian:bullseye-20240701-slim as build
 
 ARG REPO=https://github.com/pikvm/ustreamer
 ARG VERSION=master
@@ -27,7 +27,7 @@ RUN cd ustreamer \
  && make
 
 ## Runtime Image
-FROM debian:bullseye-20230109-slim as run
+FROM debian:bullseye-20240701-slim as run
 
 RUN apt update \
  && apt install -y \
